@@ -57,6 +57,6 @@ class Posts extends Model
             return $this->findAll();
         }
 
-        return $this->where(['slug' => $slug])->first();
+        return $this->where(['post_slug' => $slug])->first();
     }
 }

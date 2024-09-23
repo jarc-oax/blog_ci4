@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\Posts as PostsModel;
+use CodeIgniter\Exceptions\PageNotFoundException;
 
 class Posts extends BaseController
 {
@@ -23,6 +24,28 @@ class Posts extends BaseController
         return view('templates/header', $data) .
             view('posts/index') .
             view('templates/footer');
+    }
+
+    /**
+     * Show the post
+     *
+     * @return string
+     */
+    public function show(?string $slug = null)
+    {
+        $model = model(PostsModel::class);
+
+        $data['post'] = $model->getPosts($slug);
+
+        if ($data['post'] === null) {
+            throw new PageNotFoundException('Cannot find the post item: ' . $slug);
+        }
+
+        $data['title'] = $data['post']['post_title'];
+
+        return view('templates/header', $data)
+            . view('posts/view')
+            . view('templates/footer');
     }
 
     /**

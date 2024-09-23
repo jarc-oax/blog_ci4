@@ -12,7 +12,7 @@
                         <?= esc($post['post_body']) ?>
                     </div>
                     <div class="p-2 d-inline">
-                        <a href="/post/<?= esc($post['post_slug'], 'url') ?>" class="btn btn-info">View</a>
+                        <a href="/posts/<?= esc($post['post_slug'], 'url') ?>" class="btn btn-info">View</a>
                     </div>
                     <form action="POST" class="p-2 d-inline">
                         <input type="hidden" name="post_id" value="<?= $post['post_id'] ?>">
