@@ -104,7 +104,7 @@ class Posts extends Model
         $builder = $this->db->table('posts');
         $builder->set('post_title', $post['post_title']);
         $builder->set('post_body', $post['post_body']);
-        $builder->where('post_id', $post['post_id']);
+        $builder->where('post_pid', $post['post_id']);
         $builder->update();
     }
 }

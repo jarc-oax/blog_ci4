@@ -14,7 +14,7 @@ class Posts extends BaseController
      * 
      * @return string
      */
-    public function index(): string
+    public function index(): mixed
     {
         $model = model(PostsModel::class);
 

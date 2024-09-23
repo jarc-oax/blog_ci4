@@ -12,6 +12,8 @@ use CodeIgniter\Filters\InvalidChars;
 use CodeIgniter\Filters\PageCache;
 use CodeIgniter\Filters\PerformanceMetrics;
 use CodeIgniter\Filters\SecureHeaders;
+use CodeIgniter\HTTP\RequestInterface;
+
 
 class Filters extends BaseFilters
 {
@@ -34,6 +36,7 @@ class Filters extends BaseFilters
         'forcehttps'    => ForceHTTPS::class,
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
+        'authGuard'     => \App\Filters\AuthGuard::class,
     ];
 
     /**
@@ -106,4 +109,13 @@ class Filters extends BaseFilters
      * @var array<string, array<string, list<string>>>
      */
     public array $filters = [];
+
+    public function before(RequestInterface $request, $arguments = null)
+    {
+        $auth = service('auth');
+
+        if (! $auth->isLoggedIn()) {
+            return redirect()->to(site_url('login'));
+        }
+    }
 }
