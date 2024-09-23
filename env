@@ -30,11 +30,11 @@
 # DATABASE
 #--------------------------------------------------------------------
 
-# database.default.hostname = localhost
-# database.default.database = ci4
-# database.default.username = root
-# database.default.password = root
-# database.default.DBDriver = MySQLi
+database.default.hostname = localhost
+database.default.database = blog_ci4
+database.default.username = php
+database.default.password = Pedrito1.
+database.default.DBDriver = MySQLi
 # database.default.DBPrefix =
 # database.default.port = 3306
 
