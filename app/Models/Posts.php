@@ -47,6 +47,8 @@ class Posts extends Model
 
 
     /**
+     * Method to get posts
+     * 
      * @param false|string $slug
      *
      * @return array|null
@@ -58,5 +60,51 @@ class Posts extends Model
         }
 
         return $this->where(['post_slug' => $slug])->first();
+    }
+
+    /**
+     * Method to get posts
+     * 
+     * @param false|string $slug
+     *
+     * @return array|null
+     */
+    public function getPostById($id = false)
+    {
+        if ($id === false) {
+            return $this->findAll();
+        }
+
+        return $this->where(['post_id' => $id])->first();
+    }
+
+    /**
+     * Method to delete a post
+     *
+     * @param int
+     *
+     * @return bool
+     */
+    public function deletePost($post_id)
+    {
+        $result = $this->db->table('posts')->where('post_id', $post_id)->delete();
+        
+        return ($this->db->affectedRows()) ? true : false;
+    }
+
+    /**
+     * Method to update a post
+     * 
+     * @param array
+     * 
+     * @return bool
+     */
+    public function updatePost($post)
+    {
+        $builder = $this->db->table('posts');
+        $builder->set('post_title', $post['post_title']);
+        $builder->set('post_body', $post['post_body']);
+        $builder->where('post_id', $post['post_id']);
+        $builder->update();
     }
 }

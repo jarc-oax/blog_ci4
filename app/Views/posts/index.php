@@ -14,14 +14,13 @@
                     <div class="p-2 d-inline">
                         <a href="/posts/<?= esc($post['post_slug'], 'url') ?>" class="btn btn-info">View</a>
                     </div>
-                    <form action="POST" class="p-2 d-inline">
-                        <input type="hidden" name="post_id" value="<?= $post['post_id'] ?>">
-                        <button class="btn btn-primary">Edit</button>
-                    </form>
+                    <div class="p-2 d-inline">
+                        <a href="/posts/edit/<?= esc($post['post_id'], 'url') ?>" class="btn btn-info">Edit</a>
+                    </div>
 
-                    <form action="DELETE" class="p-2 d-inline">
-                        <input type="hidden" name="post_id" value="<?= $post['post_id'] ?>">
-                        <button class="btn btn-danger">Delete</button>
+                    <form action="/posts/delete/<?= $post['post_id'] ?>" method="post" class="p-2 d-inline">
+                        <?= csrf_field() ?>
+                        <button class="btn btn-danger" value="delete">Delete</button>
                     </form>
                 </div>
             </div>

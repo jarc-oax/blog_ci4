@@ -96,4 +96,58 @@ class Posts extends BaseController
 
         return $this->index();
     }
+
+    /**
+     * Edit form
+     * 
+     * @return string
+     */
+    public function edit($post_id): string
+    {
+        helper('form');
+        $model = model(PostsModel::class);
+        $data['post'] = $model->getPostById($post_id);
+        $data['title'] = 'Edit post '. $data['post']['post_title'];
+
+        return view('templates/header', $data) .
+            view('posts/edit', $data) .
+            view('templates/footer');
+    }
+
+    /**
+     * Update post form
+     *
+     * @return string
+     */
+    public function update(): string
+    {
+        $data = $this->request->getPost(['post_id', 'post_title', 'post_body']);
+
+        // Checks whether the submitted data passed the validation rules.
+        if (! $this->validateData($data, [
+            'post_title' => 'required|max_length[255]|min_length[3]',
+            'post_body'  => 'required|max_length[5000]|min_length[10]',
+        ])) {
+        // The validation fails, so returns the form.
+            return $this->edit($data['post_id']);
+        }
+        $model = model(PostsModel::class);
+        $model->updatePost($data);
+
+        return $this->index();
+    }
+
+    /**
+     * Update post method
+     *
+     * @return string
+     */
+    public function delete($post_id): string
+    {
+
+        $model = model(PostsModel::class);
+        $model->deletePost($post_id);
+
+        return $this->index();
+    }
 }
