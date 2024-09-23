@@ -7,4 +7,4 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="p-3"><?= esc($title) ?></h1>
+        <h1 class="p-3 bg-dark text-light"><?= esc($title) ?></h1>

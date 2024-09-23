@@ -2,16 +2,32 @@
 
 <?php if ($posts !== []): ?>
 
-    <?php foreach ($posts as $post): ?>
+    <div class="row">
+        <?php foreach ($posts as $post): ?>
+            <div class="col-sm-4 p-2">
+                <div class="shadow p-2">
+                    <h3><?= esc($post['post_title']) ?></h3>
 
-        <h3><?= esc($post['post_title']) ?></h3>
+                    <div class="main">
+                        <?= esc($post['post_body']) ?>
+                    </div>
+                    <div class="p-2 d-inline">
+                        <a href="/post/<?= esc($post['post_slug'], 'url') ?>" class="btn btn-info">View</a>
+                    </div>
+                    <form action="POST" class="p-2 d-inline">
+                        <input type="hidden" name="post_id" value="<?= $post['post_id'] ?>">
+                        <button class="btn btn-primary">Edit</button>
+                    </form>
 
-        <div class="main">
-            <?= esc($post['post_body']) ?>
-        </div>
-        <p><a href="/post/<?= esc($post['post_slug'], 'url') ?>">View post</a></p>
+                    <form action="DELETE" class="p-2 d-inline">
+                        <input type="hidden" name="post_id" value="<?= $post['post_id'] ?>">
+                        <button class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
 
-    <?php endforeach ?>
+        <?php endforeach ?>
+    </div>
 
 <?php else: ?>
 
