@@ -1,4 +1,5 @@
 <a href="/posts/new">Create new post</a>
+<a href="/logout">Logout</a>
 
 <?php if ($posts !== []): ?>
 

@@ -17,5 +17,5 @@
         <br>
     </div>
 
-    <input type="submit" name="submit" value="Create post" class="btn btn-primary">
+    <input type="submit" name="submit" value="Edit post" class="btn btn-primary">
 </form>

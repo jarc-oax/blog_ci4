@@ -18,10 +18,12 @@ class Posts extends Migration
             'post_title' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '100',
+                'unique'     => true
             ],
             'post_slug' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '100',
+                'unique'     => true
             ],
             'post_body' => [
                 'type' => 'TEXT',

@@ -1,29 +1,19 @@
 <div class="columns is-mobile is-centered">
     <div class="column is-narrow">
-        <form class="box" action="login" method="post">
+        <form class="box p-3 shadow" action="login" method="post">
             <?= csrf_field() ?>
-            <h3 class="has-text-centered">Login Form</h3>
-
             <div class="field">
-                <label class="label">Email</label>
-                <div class="control">
-                    <input class="input" type="text" name="email" placeholder="Email"
-                        value="<?= old('email') ?>">
-                </div>
+                <label class="form-label">Email</label>
+                <input class="form-control" type="text" name="email" placeholder="Email" value="<?= old('email') ?>">
             </div>
 
             <div class="field">
-                <label class="label">Password</label>
-                <div class="control">
-                    <input class="input" type="password" name="password" placeholder="Password"
-                        value="<?= old('password') ?>">
-                </div>
+                <label class="form-label">Password</label>
+                <input class="form-control" type="password" name="password" placeholder="Password" value="<?= old('password') ?>">
             </div>
 
-            <div class="field is-grouped">
-                <div class="control">
-                    <button class="button is-link">Sign in</button>
-                </div>
+            <div class="p-4">
+                <button class="btn btn-primary is-link">Sign in</button>
             </div>
 
             <?php if(session()->getFlashdata('msg')):?>
