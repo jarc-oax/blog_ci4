@@ -6,6 +6,11 @@ use App\Models\User as UserModel;
 
 class LoginController extends BaseController
 {
+    /**
+     * Show the login form
+     *
+     * @return string
+     */
     public function showLoginForm()
     {
         helper(['Login']);
@@ -17,6 +22,11 @@ class LoginController extends BaseController
             view('templates/footer');
     }
 
+    /**
+     * Login the user
+     *
+     * @return string
+     */
     public function login()
     {
         helper(['form']);
@@ -44,6 +54,11 @@ class LoginController extends BaseController
         }
     }
 
+    /**
+     * Logout the user
+     *
+     * @return string
+     */
     public function logout()
     {
         $authSession = new SessionController();
