@@ -7,21 +7,20 @@ class SessionController extends BaseController
 {
     public function authorised($data)
     {
-        $session = session();
+        $this->session = \Config\Services::session();
+
         $authData = [
             'name' => $data['name'],
             'email' => $data['email'],
             'isLoggedIn' => true
         ];
 
-        $session->set($authData);
+        $this->session->set($authData);
     }
 
     public function unauthorised()
     {
-        $session = session();
-        $authData = ['isLoggedIn' => false];
-
-        $session->set($authData);
+        $this->session = \Config\Services::session();
+        $this->session->destroy();
     }
 }

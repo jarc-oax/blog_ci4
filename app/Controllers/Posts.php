@@ -10,6 +10,14 @@ use CodeIgniter\Exceptions\PageNotFoundException;
 class Posts extends BaseController
 {
     /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        helper('form');
+    }
+
+    /**
      * Root page
      * 
      * @return string

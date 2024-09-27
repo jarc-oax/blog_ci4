@@ -8,8 +8,13 @@ class LoginController extends BaseController
 {
     public function showLoginForm()
     {
-        helper(['form']);
-        echo view('auth/login');
+        helper(['Login']);
+        $data['title'] = 'Blog';
+        
+
+        return view('templates/header', $data) .
+            view('auth/login') .
+            view('templates/footer');
     }
 
     public function login()
